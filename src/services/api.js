@@ -22,17 +22,17 @@ export async function addContact({firstName, lastName, age, photo}) {
   });
 }
 
-export async function editContact({firstName, lastName, age, photo}) {
+export async function editContact({id, firstName, lastName, age, photo}) {
   return await MainAxios({
-    url: '/contact',
+    url: `/contact/${id}`,
     method: 'PUT',
     data: {firstName, lastName, age, photo},
   });
 }
 
-export async function deleteContact() {
+export async function deleteContact(id) {
   return await MainAxios({
-    url: '/contact',
+    url: `/contact/${id}`,
     method: 'DELETE',
   });
 }

@@ -1,12 +1,14 @@
 import React from 'react';
 import {StyleSheet, Text, View, TouchableNativeFeedback} from 'react-native';
+import {Mixins, Spacing, Colors, Typography} from '../../styles';
+import Icon from 'react-native-vector-icons/Feather';
 
 export default function ActionAddContact({onPress}) {
   return (
     <View style={styles.actionAddContact}>
       <TouchableNativeFeedback onPress={onPress}>
-        <View style={[styles.actionAddContactButton, styles.actionAddContact]}>
-          <View key={'icon'} />
+        <View style={styles.actionAddContactButton}>
+          <Icon key={'icon'} name={'plus'} size={24} style={styles.icon} />
           <Text style={styles.caption}>{'Tambah kontak'}</Text>
         </View>
       </TouchableNativeFeedback>
@@ -16,11 +18,21 @@ export default function ActionAddContact({onPress}) {
 
 const styles = StyleSheet.create({
   actionAddContact: {
-    borderRadius: 8,
+    ...Mixins.actionAddContact,
+    overflow: 'hidden',
   },
   actionAddContactButton: {
+    ...Mixins.actionAddContact,
     display: 'flex',
     flexDirection: 'row',
+    alignItems: 'center',
+    padding: Spacing.small,
+    backgroundColor: Colors.primary,
   },
-  caption: {},
+  caption: {
+    ...Typography.actionButtonText,
+  },
+  icon: {
+    marginRight: Spacing.smallest,
+  },
 });
