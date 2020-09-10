@@ -4,16 +4,21 @@ import React, {useCallback, useEffect, useRef, useState} from 'react';
 const MAX_AGE = 100;
 const MIN_AGE = 1;
 
-export default function AgePicker({style, selectedValue, onValueChange}) {
+export default function AgePicker({
+  style,
+  selectedValue,
+  onValueChange,
+  maxAge,
+}) {
   const [age, setAge] = useState([]);
 
   const initList = useCallback(async () => {
     const _age = [{label: 'Umur', value: '0'}];
-    for (let i = MIN_AGE; i <= MAX_AGE; i++) {
+    for (let i = MIN_AGE; i <= maxAge; i++) {
       _age.push({label: `${i}`, value: `${i}`});
     }
     setAge(_age);
-  }, []);
+  }, [maxAge]);
 
   const ageRef = useRef();
 

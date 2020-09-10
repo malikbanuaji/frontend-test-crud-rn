@@ -30,7 +30,7 @@ export async function addContact({firstName, lastName, age, photo}) {
 export async function editContact({id, firstName, lastName, age, photo}) {
   return await Axios.put(
     `/contact/${id}`,
-    {id, firstName, lastName, age, photo},
+    {firstName, lastName, age, photo},
     config,
   );
 }

@@ -43,17 +43,15 @@ export default function CreateEditContactScreen() {
   const navigation = useNavigation();
   const route = useRoute();
 
-  const windows = useWindowDimensions();
-  const photoSize = useMemo(() => {
-    return {
-      width: windows.width * 0.3,
-      height: windows.width * 0.3,
-    };
-  }, [windows.width]);
   const dispatch = useDispatch();
 
   const actionStatus = route.params?.actionStatus;
-  const contactDetail = route.params?.contactDetail || {};
+  const contactDetail = route.params?.contactDetail || {
+    photo: 'N/A',
+    firstName: '',
+    lastName: '',
+    age: '0',
+  };
   useEffect(() => {
     if (actionStatus === 'EDIT') {
       setFirstName(contactDetail.firstName);
@@ -150,7 +148,7 @@ export default function CreateEditContactScreen() {
       if (Object.values(multipleResult).includes('never_ask_again')) {
         Utils.PopUp.popAskPermissionCamera(() => Linking.openSettings());
       } else if (Object.values(multipleResult).includes('denied')) {
-        _handleGallery();
+        Utils.PopUp.popAskPermissionCamera(() => _handleGallery());
       } else {
         openGalleryPicker();
       }
@@ -166,7 +164,7 @@ export default function CreateEditContactScreen() {
       if (Object.values(multipleResult).includes('never_ask_again')) {
         Utils.PopUp.popAskPermissionCamera(() => Linking.openSettings());
       } else if (Object.values(multipleResult).includes('denied')) {
-        _handleCamera();
+        Utils.PopUp.popAskPermissionCamera(() => _handleCamera());
       } else {
         openPickCamera();
       }
@@ -176,7 +174,7 @@ export default function CreateEditContactScreen() {
   function _handleOnPressSave() {
     const isFirstNameValid = Utils.Validator.firstNameValidator(firstName);
     const isLastNameValid = Utils.Validator.lastNameValidator(lastName);
-    const isAgeValid = Number(age) <= 100;
+    const isAgeValid = Number(age) <= 100 && Number(age) > 0;
     setValidateStatus({
       firstName: isFirstNameValid,
       lastName: isLastNameValid,
@@ -209,6 +207,7 @@ export default function CreateEditContactScreen() {
           .catch((e) => {
             stopLoading();
             Utils.SmallMessage.showError();
+            console.log(e.response.data);
           });
       } else {
         startLoading();
@@ -244,10 +243,6 @@ export default function CreateEditContactScreen() {
     }
   }
 
-  const _isDisabled = useMemo(() => {
-    return firstName.length <= 0 || lastName.length <= 0 || age === '0';
-  }, [age, firstName.length, lastName.length]);
-
   return (
     <View style={styles.createEditContactScreen}>
       <HeaderBar>
@@ -266,7 +261,7 @@ export default function CreateEditContactScreen() {
               text={`${actionStatus === 'EDIT' ? 'Ubah' : 'Tambah'} kontak`}
             />
             <HeaderBarButton
-              disabled={_isDisabled}
+              disabled={false}
               style={styles.saveButton}
               text={'Simpan'}
               onPress={_handleOnPressSave}
@@ -310,11 +305,17 @@ export default function CreateEditContactScreen() {
       )}
       <View style={styles.agePickerView}>
         <AgePicker
+          maxAge={100}
           selectedValue={age}
           style={styles.agePicker}
           onValueChange={_handleOnChangeTextAge}
         />
       </View>
+      {validateStatus.age === false && (
+        <Text style={{color: Colors.danger, marginHorizontal: Spacing.base}}>
+          {'* Rentang umur 1 - 100'}
+        </Text>
+      )}
       <PhotoModal
         onPressAbort={closeModal}
         hasPhoto={photo !== 'N/A'}

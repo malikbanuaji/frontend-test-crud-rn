@@ -67,7 +67,7 @@ export default function ContactListScreen() {
     <View style={styles.container}>
       <StatusBar backgroundColor={Colors.primary} barStyle={'dark-content'} />
       <HeaderBar>
-        <HeaderBarTitle text={'Kontak Mu'} />
+        <HeaderBarTitle text={'KontakMu'} />
       </HeaderBar>
       <FlatList
         refreshing={isLoading}
