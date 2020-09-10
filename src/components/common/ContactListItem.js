@@ -7,6 +7,7 @@ import {
   TouchableNativeFeedback,
 } from 'react-native';
 import {Typography, Colors, Mixins, Spacing} from '../../styles';
+import PhotoSmall from './PhotoSmall';
 
 export default function ContactListItem({
   id,
@@ -25,11 +26,11 @@ export default function ContactListItem({
     <View style={[styles.contactListItem, style]}>
       <TouchableNativeFeedback onPress={_handlePress}>
         <View style={styles.contactListItemButton}>
-          <Image
-            style={styles.photo}
-            source={{uri: photo}}
-            width={40}
-            height={40}
+          <PhotoSmall
+            style={styles.photoSmall}
+            photo={photo}
+            firstName={firstName}
+            lastName={lastName}
           />
           <View style={styles.contentContainer}>
             <Text style={styles.name}>{`${firstName} ${lastName}`}</Text>
@@ -42,10 +43,8 @@ export default function ContactListItem({
 }
 
 const styles = StyleSheet.create({
-  contactListItem: {},
   contactListItemButton: {
     alignItems: 'center',
-    // padding: Spacing.smaller,
     paddingHorizontal: Spacing.base,
     paddingVertical: Spacing.smaller,
     display: 'flex',
@@ -55,16 +54,13 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column',
   },
-  photo: {
-    ...Mixins.contactListItemPhoto,
-    width: 40,
-    height: 40,
-    marginRight: Spacing.small,
-  },
   name: {
     ...Typography.cardTitle,
   },
   age: {
     ...Typography.cardSubtitle,
+  },
+  photoSmall: {
+    marginRight: Spacing.smaller,
   },
 });

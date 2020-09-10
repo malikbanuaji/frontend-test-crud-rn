@@ -6,33 +6,35 @@ const MainAxios = Axios.create({
   timeout: Settings.TIMEOUT,
 });
 
+const config = {
+  baseURL: Settings.BASE_URL,
+  timeout: Settings.TIMEOUT,
+};
+
 export async function fetchAllContact() {
-  return await MainAxios({url: '/contact'});
+  return await Axios.get('/contact', config);
 }
 
 export async function fetchContact(id) {
-  return await MainAxios({url: `/contact/${id}`});
+  return await Axios.get(`/contact/${id}`, config);
 }
 
 export async function addContact({firstName, lastName, age, photo}) {
-  return await MainAxios({
-    url: '/contact',
-    method: 'POST',
-    data: {firstName, lastName, age, photo},
-  });
+  return await Axios.post(
+    '/contact',
+    {firstName, lastName, age, photo},
+    config,
+  );
 }
 
 export async function editContact({id, firstName, lastName, age, photo}) {
-  return await MainAxios({
-    url: `/contact/${id}`,
-    method: 'PUT',
-    data: {firstName, lastName, age, photo},
-  });
+  return await Axios.put(
+    `/contact/${id}`,
+    {id, firstName, lastName, age, photo},
+    config,
+  );
 }
 
 export async function deleteContact(id) {
-  return await MainAxios({
-    url: `/contact/${id}`,
-    method: 'DELETE',
-  });
+  return await Axios.delete(`/contact/${id}`, config);
 }

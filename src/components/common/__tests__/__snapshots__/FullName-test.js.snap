@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly  1`] = `
+<Text
+  style={
+    Object {
+      "fontFamily": "Rubik-Medium",
+      "fontSize": 28,
+      "marginHorizontal": 16,
+    }
+  }
+>
+  Doe Doe
+</Text>
+`;
+
+exports[`renders correctly without firstName 1`] = `
+<Text
+  style={
+    Object {
+      "fontFamily": "Rubik-Medium",
+      "fontSize": 28,
+      "marginHorizontal": 16,
+    }
+  }
+>
+  undefined Doe
+</Text>
+`;
+
+exports[`renders correctly without lastName 1`] = `
+<Text
+  style={
+    Object {
+      "fontFamily": "Rubik-Medium",
+      "fontSize": 28,
+      "marginHorizontal": 16,
+    }
+  }
+>
+  Doe undefined
+</Text>
+`;

@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "flexDirection": "row",
+      }
+    }
+  >
+    <ActivityIndicator
+      animating={true}
+      color="#93b5e1"
+      hidesWhenStopped={true}
+      size={30}
+      style={
+        Object {
+          "marginRight": 8,
+        }
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`renders correctly with props \`text\` 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "flexDirection": "row",
+      }
+    }
+  >
+    <ActivityIndicator
+      animating={true}
+      color="#93b5e1"
+      hidesWhenStopped={true}
+      size={30}
+      style={
+        Object {
+          "marginRight": 8,
+        }
+      }
+    />
+    <Text
+      style={
+        Object {
+          "fontFamily": "Rubik-Medium",
+          "fontSize": 14,
+        }
+      }
+    >
+      Menunggu
+    </Text>
+  </View>
+</View>
+`;

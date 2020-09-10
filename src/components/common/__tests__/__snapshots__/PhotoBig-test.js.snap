@@ -1,0 +1,272 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly with full props 1`] = `
+<View
+  style={
+    Object {
+      "borderRadius": 8,
+      "overflow": "hidden",
+    }
+  }
+>
+  <View
+    accessible={true}
+    focusable={false}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Array [
+        Object {
+          "borderRadius": 8,
+          "overflow": "hidden",
+        },
+      ]
+    }
+  >
+    <Image
+      height={225}
+      source={
+        Object {
+          "uri": "https://mattermost.com/wp-content/uploads/2018/10/React_Native_Logo.png",
+        }
+      }
+      style={
+        Object {
+          "height": 225,
+          "width": 225,
+        }
+      }
+      width={225}
+    />
+  </View>
+</View>
+`;
+
+exports[`renders correctly with image 1`] = `
+<View
+  style={
+    Object {
+      "borderRadius": 8,
+      "overflow": "hidden",
+    }
+  }
+>
+  <View
+    accessible={true}
+    focusable={false}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Array [
+        Object {
+          "borderRadius": 8,
+          "overflow": "hidden",
+        },
+      ]
+    }
+  >
+    <Image
+      height={225}
+      source={
+        Object {
+          "uri": "https://mattermost.com/wp-content/uploads/2018/10/React_Native_Logo.png",
+        }
+      }
+      style={
+        Object {
+          "height": 225,
+          "width": 225,
+        }
+      }
+      width={225}
+    />
+  </View>
+</View>
+`;
+
+exports[`renders correctly without firstName 1`] = `
+<View
+  style={
+    Object {
+      "borderRadius": 8,
+      "overflow": "hidden",
+    }
+  }
+>
+  <View
+    accessible={true}
+    focusable={false}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Array [
+        Object {
+          "borderRadius": 8,
+          "overflow": "hidden",
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "height": 225,
+            "width": 225,
+          },
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#93b5e1",
+            "borderRadius": 8,
+            "justifyContent": "center",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          Object {
+            "fontFamily": "Rubik-Medium",
+            "fontSize": 48,
+          }
+        }
+      >
+        D
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`renders correctly without image 1`] = `
+<View
+  style={
+    Object {
+      "borderRadius": 8,
+      "overflow": "hidden",
+    }
+  }
+>
+  <View
+    accessible={true}
+    focusable={false}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Array [
+        Object {
+          "borderRadius": 8,
+          "overflow": "hidden",
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "height": 225,
+            "width": 225,
+          },
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#93b5e1",
+            "borderRadius": 8,
+            "justifyContent": "center",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          Object {
+            "fontFamily": "Rubik-Medium",
+            "fontSize": 48,
+          }
+        }
+      >
+        
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`renders correctly without lastName 1`] = `
+<View
+  style={
+    Object {
+      "borderRadius": 8,
+      "overflow": "hidden",
+    }
+  }
+>
+  <View
+    accessible={true}
+    focusable={false}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Array [
+        Object {
+          "borderRadius": 8,
+          "overflow": "hidden",
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "height": 225,
+            "width": 225,
+          },
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#93b5e1",
+            "borderRadius": 8,
+            "justifyContent": "center",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          Object {
+            "fontFamily": "Rubik-Medium",
+            "fontSize": 48,
+          }
+        }
+      >
+        D
+      </Text>
+    </View>
+  </View>
+</View>
+`;

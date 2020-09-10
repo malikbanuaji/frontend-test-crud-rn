@@ -18,11 +18,11 @@ export default function ActionAddContact({onPress}) {
 
 const styles = StyleSheet.create({
   actionAddContact: {
-    ...Mixins.actionAddContact,
+    ...Mixins.baseRounded,
     overflow: 'hidden',
   },
   actionAddContactButton: {
-    ...Mixins.actionAddContact,
+    ...Mixins.baseRounded,
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',

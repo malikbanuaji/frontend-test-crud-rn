@@ -1,38 +1,29 @@
-import {useRoute, useNavigation} from '@react-navigation/native';
-import React, {useMemo} from 'react';
-import {
-  Image,
-  StyleSheet,
-  Text,
-  useWindowDimensions,
-  View,
-  Alert,
-} from 'react-native';
-import DangerButton from '../components/common/DangerButton';
-import NormalButton from '../components/common/NormalButton';
-import {Colors, Mixins, Spacing, Typography} from '../styles';
-import HeaderBar from '../components/common/HeaderBar';
-import BackButton from '../components/common/BackButton';
-import {Api} from '../services';
+import {useNavigation, useRoute} from '@react-navigation/native';
+import React, {useMemo, useState} from 'react';
+import {Alert, StyleSheet, Text, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
+import BackButton from '../components/common/BackButton';
+import DangerButton from '../components/common/DangerButton';
+import HeaderBar from '../components/common/HeaderBar';
+import HeaderLoading from '../components/common/HeaderLoading';
+import NormalButton from '../components/common/NormalButton';
+import PhotoBig from '../components/common/PhotoBig';
 import * as ContactActions from '../redux/actions/contact';
+import {Api} from '../services';
+import {Spacing, Typography} from '../styles';
+import Utils from '../utils';
+import FullName from '../components/common/FullName';
 
 export default function ContactDetailScreen() {
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const route = useRoute();
-  const windows = useWindowDimensions();
-  const photoSize = useMemo(() => {
-    return {
-      width: windows.width * 0.3,
-      height: windows.width * 0.3,
-    };
-  }, [windows.width]);
+
   const _id = route.params?.id;
   const contactList = useSelector((state) => state.contact.data);
 
   const contactDetail = useMemo(() => {
-    const _detail = contactList.find((value) => value.id === _id);
+    const _detail = contactList.find((value) => value.id === _id) || {};
 
     return {
       id: _id,
@@ -47,13 +38,19 @@ export default function ContactDetailScreen() {
     navigation.goBack();
   }
 
+  const [isLoading, setIsLoading] = useState(false);
+
   function deleteContact() {
+    setIsLoading(true);
     Api.deleteContact(_id)
       .then(() => {
+        setIsLoading(false);
         dispatch(ContactActions.deleteContact({id: _id}));
+        navigation.goBack();
       })
       .catch((e) => {
-        console.log(e.response.data);
+        setIsLoading(false);
+        Utils.SmallMessage.showError();
       });
   }
 
@@ -79,29 +76,37 @@ export default function ContactDetailScreen() {
   return (
     <View>
       <HeaderBar>
-        <BackButton onPress={_handleBackButton} />
+        {isLoading ? (
+          <HeaderLoading text={'Menghapus kontak...'} />
+        ) : (
+          <BackButton onPress={_handleBackButton} />
+        )}
       </HeaderBar>
-      <Image
-        style={styles.photo}
-        source={{uri: contactDetail.photo}}
-        {...photoSize}
-      />
+      <View style={styles.photoButtonView}>
+        <PhotoBig
+          photo={contactDetail.photo}
+          firstName={contactDetail.firstName}
+          lastName={contactDetail.lastName}
+        />
+      </View>
       <View style={styles.contentContainer}>
-        <Text key={'name'} style={styles.name}>{`${
-          contactDetail.firstName || 'Malik'
-        } ${contactDetail.lastName || 'Banuaji'}`}</Text>
-        {/* <View style={styles.divider} /> */}
+        <FullName
+          firstName={contactDetail.firstName}
+          lastName={contactDetail.lastName}
+        />
         <Text key={'age'} style={styles.age}>
-          {contactDetail.age || 23}
+          {`${contactDetail.age}`}
         </Text>
       </View>
       <View style={styles.buttonContainer}>
         <NormalButton
+          disabled={isLoading === true}
           style={styles.button}
           text={'Ubah kontak'}
           onPress={_handlePressEdit}
         />
         <DangerButton
+          disabled={isLoading === true}
           style={styles.button}
           text={'Hapus kontak'}
           onPress={_handlePressDelete}
@@ -115,16 +120,11 @@ const styles = StyleSheet.create({
   contentContainer: {
     marginVertical: Spacing.base,
   },
-  photo: {
-    borderRadius: Mixins.borderRadius,
-    backgroundColor: Colors.primary,
-    alignSelf: 'center',
+  photoButtonView: {
     marginBottom: Spacing.base,
+    alignItems: 'center',
   },
-  name: {
-    ...Typography.contactTitle,
-    marginHorizontal: Spacing.base,
-  },
+
   age: {
     ...Typography.contactSubtitle,
     marginHorizontal: Spacing.base,
@@ -135,11 +135,5 @@ const styles = StyleSheet.create({
   button: {
     marginHorizontal: Spacing.base,
     marginVertical: Spacing.smaller,
-  },
-  divider: {
-    height: 2,
-    backgroundColor: Colors.lightGray,
-    marginHorizontal: Spacing.base,
-    marginVertical: Spacing.small,
   },
 });

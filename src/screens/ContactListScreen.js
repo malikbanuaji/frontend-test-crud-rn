@@ -1,14 +1,15 @@
+import {useNavigation} from '@react-navigation/native';
 import React, {useCallback, useEffect, useState} from 'react';
-import {FlatList, StyleSheet, Text, View, StatusBar} from 'react-native';
+import {FlatList, StatusBar, StyleSheet, View} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
 import ActionAddContact from '../components/common/ActionAddContact';
 import ContactListItem from '../components/common/ContactListItem';
-import {Typography, Spacing, Colors} from '../styles';
-import {useNavigation} from '@react-navigation/native';
-import {Api} from '../services';
-import {useDispatch, useSelector} from 'react-redux';
-import {setContactList} from '../redux/actions/contact';
 import HeaderBar from '../components/common/HeaderBar';
 import HeaderBarTitle from '../components/common/HeaderBarTitle';
+import {setContactList} from '../redux/actions/contact';
+import {Api} from '../services';
+import {Colors, Spacing, Typography} from '../styles';
+import Utils from '../utils';
 
 export default function ContactListScreen() {
   const navigation = useNavigation();
@@ -16,7 +17,6 @@ export default function ContactListScreen() {
 
   const _handlePressContactListItem = useCallback(
     (item) => {
-      console.log(item);
       navigation.navigate('ContactDetail', {id: item.id});
     },
     [navigation],
@@ -32,6 +32,7 @@ export default function ContactListScreen() {
       })
       .catch((e) => {
         setIsLoading(false);
+        Utils.SmallMessage.showError();
       });
   }, [dispatch]);
 
@@ -91,18 +92,7 @@ const styles = StyleSheet.create({
   },
   actionContainer: {
     position: 'absolute',
-    right: 16,
-    bottom: 16,
-  },
-  headerTitle: {
-    ...Typography.headerTitle,
-    paddingVertical: Spacing.base,
-  },
-  headerDivider: {
-    marginHorizontal: Spacing.largest,
-    height: 4,
-    borderRadius: 4,
-    backgroundColor: Colors.gray,
-    marginBottom: Spacing.base,
+    right: Spacing.base,
+    bottom: Spacing.base,
   },
 });

@@ -3,9 +3,16 @@ import {StyleSheet} from 'react-native';
 import {Mixins, Typography} from '../../styles';
 import BaseButton from './BaseButton';
 
-export default function NormalButton({text, onPress, textStyle, style}) {
+export default function NormalButton({
+  text,
+  onPress,
+  textStyle,
+  style,
+  disabled,
+}) {
   return (
     <BaseButton
+      disabled={disabled}
       text={text}
       onPress={onPress}
       style={[styles.button, style]}
@@ -17,7 +24,7 @@ export default function NormalButton({text, onPress, textStyle, style}) {
 const styles = StyleSheet.create({
   button: {
     ...Mixins.buttonBorder,
-    ...Mixins.button,
+    ...Mixins.buttonRounded,
   },
   buttonText: {
     ...Typography.buttonText,

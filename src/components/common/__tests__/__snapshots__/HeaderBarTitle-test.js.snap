@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<Text
+  style={
+    Object {
+      "flex": 1,
+      "fontFamily": "Rubik-Light",
+      "fontSize": 24,
+      "marginLeft": 8,
+    }
+  }
+/>
+`;
+
+exports[`renders correctly with props \`text\` 1`] = `
+<Text
+  style={
+    Object {
+      "flex": 1,
+      "fontFamily": "Rubik-Light",
+      "fontSize": 24,
+      "marginLeft": 8,
+    }
+  }
+>
+  Hello
+</Text>
+`;

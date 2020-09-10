@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, TouchableNativeFeedback, View} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
+import {Mixins} from '../../styles';
 
 export default function BackButton({onPress}) {
   return (
@@ -16,13 +17,10 @@ export default function BackButton({onPress}) {
 
 const styles = StyleSheet.create({
   backButton: {
-    borderRadius: 8,
-    overflow: 'hidden',
+    ...Mixins.baseRounded,
   },
   button: {
-    borderRadius: 8,
-    height: 30,
-    width: 30,
+    ...Mixins.backButtonDimension,
     justifyContent: 'center',
     alignItems: 'center',
   },

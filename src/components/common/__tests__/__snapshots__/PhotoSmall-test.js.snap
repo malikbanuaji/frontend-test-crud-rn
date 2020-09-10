@@ -1,0 +1,165 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly with full props 1`] = `
+<View
+  style={
+    Array [
+      undefined,
+    ]
+  }
+>
+  <Image
+    height={40}
+    source={
+      Object {
+        "uri": "https://mattermost.com/wp-content/uploads/2018/10/React_Native_Logo.png",
+      }
+    }
+    style={
+      Object {
+        "borderRadius": 8,
+        "height": 40,
+        "overflow": "hidden",
+        "width": 40,
+      }
+    }
+    width={40}
+  />
+</View>
+`;
+
+exports[`renders correctly with image 1`] = `
+<View
+  style={
+    Array [
+      undefined,
+    ]
+  }
+>
+  <Image
+    height={40}
+    source={
+      Object {
+        "uri": "https://mattermost.com/wp-content/uploads/2018/10/React_Native_Logo.png",
+      }
+    }
+    style={
+      Object {
+        "borderRadius": 8,
+        "height": 40,
+        "overflow": "hidden",
+        "width": 40,
+      }
+    }
+    width={40}
+  />
+</View>
+`;
+
+exports[`renders correctly without firstName 1`] = `
+<View
+  style={
+    Array [
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#93b5e1",
+          "borderRadius": 8,
+          "height": 40,
+          "justifyContent": "center",
+          "width": 40,
+        },
+      ]
+    }
+  >
+    <Text
+      style={
+        Object {
+          "fontFamily": "Rubik-Medium",
+          "fontSize": 14,
+        }
+      }
+    >
+      D
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`renders correctly without image 1`] = `
+<View
+  style={
+    Array [
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#93b5e1",
+          "borderRadius": 8,
+          "height": 40,
+          "justifyContent": "center",
+          "width": 40,
+        },
+      ]
+    }
+  >
+    <Text
+      style={
+        Object {
+          "fontFamily": "Rubik-Medium",
+          "fontSize": 14,
+        }
+      }
+    >
+      
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`renders correctly without lastName 1`] = `
+<View
+  style={
+    Array [
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#93b5e1",
+          "borderRadius": 8,
+          "height": 40,
+          "justifyContent": "center",
+          "width": 40,
+        },
+      ]
+    }
+  >
+    <Text
+      style={
+        Object {
+          "fontFamily": "Rubik-Medium",
+          "fontSize": 14,
+        }
+      }
+    >
+      D
+    </Text>
+  </View>
+</View>
+`;

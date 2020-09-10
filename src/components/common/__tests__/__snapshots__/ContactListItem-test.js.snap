@@ -1,0 +1,567 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Array [
+      undefined,
+      undefined,
+    ]
+  }
+>
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "flexDirection": "row",
+        "paddingHorizontal": 16,
+        "paddingVertical": 8,
+      }
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "marginRight": 8,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#93b5e1",
+              "borderRadius": 8,
+              "height": 40,
+              "justifyContent": "center",
+              "width": 40,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Object {
+              "fontFamily": "Rubik-Medium",
+              "fontSize": 14,
+            }
+          }
+        >
+          
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "display": "flex",
+          "flexDirection": "column",
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "fontFamily": "Rubik-Medium",
+            "fontSize": 16,
+          }
+        }
+      >
+        undefined undefined
+      </Text>
+      <Text
+        style={
+          Object {
+            "fontFamily": "Rubik-Light",
+            "fontSize": 14,
+          }
+        }
+      />
+    </View>
+  </View>
+</View>
+`;
+
+exports[`renders correctly only age 1`] = `
+<View
+  style={
+    Array [
+      undefined,
+      undefined,
+    ]
+  }
+>
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "flexDirection": "row",
+        "paddingHorizontal": 16,
+        "paddingVertical": 8,
+      }
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "marginRight": 8,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#93b5e1",
+              "borderRadius": 8,
+              "height": 40,
+              "justifyContent": "center",
+              "width": 40,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Object {
+              "fontFamily": "Rubik-Medium",
+              "fontSize": 14,
+            }
+          }
+        >
+          
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "display": "flex",
+          "flexDirection": "column",
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "fontFamily": "Rubik-Medium",
+            "fontSize": 16,
+          }
+        }
+      >
+        undefined undefined
+      </Text>
+      <Text
+        style={
+          Object {
+            "fontFamily": "Rubik-Light",
+            "fontSize": 14,
+          }
+        }
+      >
+        23
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`renders correctly only firstname 1`] = `
+<View
+  style={
+    Array [
+      undefined,
+      undefined,
+    ]
+  }
+>
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "flexDirection": "row",
+        "paddingHorizontal": 16,
+        "paddingVertical": 8,
+      }
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "marginRight": 8,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#93b5e1",
+              "borderRadius": 8,
+              "height": 40,
+              "justifyContent": "center",
+              "width": 40,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Object {
+              "fontFamily": "Rubik-Medium",
+              "fontSize": 14,
+            }
+          }
+        >
+          J
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "display": "flex",
+          "flexDirection": "column",
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "fontFamily": "Rubik-Medium",
+            "fontSize": 16,
+          }
+        }
+      >
+        John undefined
+      </Text>
+      <Text
+        style={
+          Object {
+            "fontFamily": "Rubik-Light",
+            "fontSize": 14,
+          }
+        }
+      />
+    </View>
+  </View>
+</View>
+`;
+
+exports[`renders correctly only lastName 1`] = `
+<View
+  style={
+    Array [
+      undefined,
+      undefined,
+    ]
+  }
+>
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "flexDirection": "row",
+        "paddingHorizontal": 16,
+        "paddingVertical": 8,
+      }
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "marginRight": 8,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#93b5e1",
+              "borderRadius": 8,
+              "height": 40,
+              "justifyContent": "center",
+              "width": 40,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Object {
+              "fontFamily": "Rubik-Medium",
+              "fontSize": 14,
+            }
+          }
+        >
+          D
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "display": "flex",
+          "flexDirection": "column",
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "fontFamily": "Rubik-Medium",
+            "fontSize": 16,
+          }
+        }
+      >
+        undefined Doe
+      </Text>
+      <Text
+        style={
+          Object {
+            "fontFamily": "Rubik-Light",
+            "fontSize": 14,
+          }
+        }
+      />
+    </View>
+  </View>
+</View>
+`;
+
+exports[`renders correctly with full props 1`] = `
+<View
+  style={
+    Array [
+      undefined,
+      undefined,
+    ]
+  }
+>
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "flexDirection": "row",
+        "paddingHorizontal": 16,
+        "paddingVertical": 8,
+      }
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "marginRight": 8,
+          },
+        ]
+      }
+    >
+      <Image
+        height={40}
+        source={
+          Object {
+            "uri": "https://mattermost.com/wp-content/uploads/2018/10/React_Native_Logo.png",
+          }
+        }
+        style={
+          Object {
+            "borderRadius": 8,
+            "height": 40,
+            "overflow": "hidden",
+            "width": 40,
+          }
+        }
+        width={40}
+      />
+    </View>
+    <View
+      style={
+        Object {
+          "display": "flex",
+          "flexDirection": "column",
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "fontFamily": "Rubik-Medium",
+            "fontSize": 16,
+          }
+        }
+      >
+        John Doe
+      </Text>
+      <Text
+        style={
+          Object {
+            "fontFamily": "Rubik-Light",
+            "fontSize": 14,
+          }
+        }
+      >
+        23
+      </Text>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`renders correctly without image 1`] = `
+<View
+  style={
+    Array [
+      undefined,
+      undefined,
+    ]
+  }
+>
+  <View
+    accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "flexDirection": "row",
+        "paddingHorizontal": 16,
+        "paddingVertical": 8,
+      }
+    }
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "marginRight": 8,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#93b5e1",
+              "borderRadius": 8,
+              "height": 40,
+              "justifyContent": "center",
+              "width": 40,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            Object {
+              "fontFamily": "Rubik-Medium",
+              "fontSize": 14,
+            }
+          }
+        >
+          
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "display": "flex",
+          "flexDirection": "column",
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "fontFamily": "Rubik-Medium",
+            "fontSize": 16,
+          }
+        }
+      >
+        undefined undefined
+      </Text>
+      <Text
+        style={
+          Object {
+            "fontFamily": "Rubik-Light",
+            "fontSize": 14,
+          }
+        }
+      />
+    </View>
+  </View>
+</View>
+`;

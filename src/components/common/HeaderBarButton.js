@@ -28,10 +28,10 @@ const styles = StyleSheet.create({
     padding: Spacing.smaller,
   },
   baseButton: {
-    ...Mixins.button,
+    ...Mixins.buttonRounded,
     ...Mixins.buttonBorder,
   },
   disabled: {
-    opacity: 0.5,
+    ...Mixins.disabled,
   },
 });

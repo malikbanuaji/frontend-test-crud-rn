@@ -1,13 +1,19 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableNativeFeedback, View} from 'react-native';
-import {Spacing, Typography} from '../../styles';
+import {Spacing, Typography, Mixins} from '../../styles';
 
-export default function BaseButton({text, onPress, style, textStyle}) {
+export default function BaseButton({
+  text,
+  onPress,
+  style,
+  textStyle,
+  disabled,
+}) {
   return (
-    <View style={[style]}>
+    <View style={[style, disabled && styles.disabled]}>
       <TouchableNativeFeedback onPress={onPress}>
-        <View style={styles.actionButton}>
-          <Text style={[styles.actionButtonText, textStyle]}>{text}</Text>
+        <View style={styles.button}>
+          <Text style={[styles.buttonText, textStyle]}>{text}</Text>
         </View>
       </TouchableNativeFeedback>
     </View>
@@ -15,10 +21,13 @@ export default function BaseButton({text, onPress, style, textStyle}) {
 }
 
 const styles = StyleSheet.create({
-  actionButtonText: {
+  buttonText: {
     ...Typography.buttonText,
   },
-  actionButton: {
+  button: {
     padding: Spacing.smaller,
+  },
+  disabled: {
+    ...Mixins.disabled,
   },
 });

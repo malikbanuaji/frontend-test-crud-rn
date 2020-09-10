@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "borderRadius": 8,
+      "overflow": "hidden",
+    }
+  }
+>
+  <View
+    accessible={true}
+    focusable={false}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#93b5e1",
+        "borderRadius": 8,
+        "display": "flex",
+        "flexDirection": "row",
+        "overflow": "hidden",
+        "padding": 12,
+      }
+    }
+  >
+    <Text
+      allowFontScaling={false}
+      style={
+        Array [
+          Object {
+            "color": undefined,
+            "fontSize": 24,
+          },
+          Object {
+            "marginRight": 4,
+          },
+          Object {
+            "fontFamily": "Feather",
+            "fontStyle": "normal",
+            "fontWeight": "normal",
+          },
+          Object {},
+        ]
+      }
+    >
+      
+    </Text>
+    <Text
+      style={
+        Object {
+          "fontFamily": "Rubik-Medium",
+          "fontSize": 14,
+        }
+      }
+    >
+      Tambah kontak
+    </Text>
+  </View>
+</View>
+`;
