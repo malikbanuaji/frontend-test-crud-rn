@@ -1,5 +1,8 @@
 # Frontend React Native Test
 
+## Frameworks
+- react-native (android)
+
 ## APK Link
 - https://drive.google.com/file/d/1G-nHr_L_izhFjJs75fAzZcXSIWLA1ufa/view?usp=sharing
 
