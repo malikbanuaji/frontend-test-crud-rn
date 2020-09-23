@@ -1,12 +1,6 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  TouchableNativeFeedback,
-} from 'react-native';
-import {Typography, Colors, Mixins, Spacing} from '../../styles';
+import {StyleSheet, Text, TouchableNativeFeedback, View} from 'react-native';
+import {Spacing, Typography} from '../../styles';
 import PhotoSmall from './PhotoSmall';
 
 export default function ContactListItem({
@@ -24,7 +18,9 @@ export default function ContactListItem({
 
   return (
     <View style={[styles.contactListItem, style]}>
-      <TouchableNativeFeedback onPress={_handlePress}>
+      <TouchableNativeFeedback
+        testID={'contact-list-item-button'}
+        onPress={_handlePress}>
         <View style={styles.contactListItemButton}>
           <PhotoSmall
             style={styles.photoSmall}

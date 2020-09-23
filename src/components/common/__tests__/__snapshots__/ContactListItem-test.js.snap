@@ -28,6 +28,7 @@ exports[`renders correctly 1`] = `
         "paddingVertical": 8,
       }
     }
+    testID="contact-list-item-button"
   >
     <View
       style={
@@ -123,6 +124,7 @@ exports[`renders correctly only age 1`] = `
         "paddingVertical": 8,
       }
     }
+    testID="contact-list-item-button"
   >
     <View
       style={
@@ -220,6 +222,7 @@ exports[`renders correctly only firstname 1`] = `
         "paddingVertical": 8,
       }
     }
+    testID="contact-list-item-button"
   >
     <View
       style={
@@ -315,6 +318,7 @@ exports[`renders correctly only lastName 1`] = `
         "paddingVertical": 8,
       }
     }
+    testID="contact-list-item-button"
   >
     <View
       style={
@@ -410,6 +414,7 @@ exports[`renders correctly with full props 1`] = `
         "paddingVertical": 8,
       }
     }
+    testID="contact-list-item-button"
   >
     <View
       style={
@@ -499,6 +504,7 @@ exports[`renders correctly without image 1`] = `
         "paddingVertical": 8,
       }
     }
+    testID="contact-list-item-button"
   >
     <View
       style={

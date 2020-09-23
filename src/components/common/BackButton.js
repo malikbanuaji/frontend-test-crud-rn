@@ -6,7 +6,7 @@ import {Mixins} from '../../styles';
 export default function BackButton({onPress}) {
   return (
     <View style={styles.backButton}>
-      <TouchableNativeFeedback onPress={onPress}>
+      <TouchableNativeFeedback testID={'back-button'} onPress={onPress}>
         <View style={styles.button}>
           <Icon name={'chevron-left'} size={24} />
         </View>

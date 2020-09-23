@@ -27,6 +27,7 @@ exports[`renders correctly 1`] = `
         "width": 30,
       }
     }
+    testID="back-button"
   >
     <Text
       allowFontScaling={false}

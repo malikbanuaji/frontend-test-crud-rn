@@ -1,18 +1,16 @@
-import {useNavigation} from '@react-navigation/native';
 import React, {useCallback, useEffect, useState} from 'react';
-import {FlatList, StatusBar, StyleSheet, View} from 'react-native';
+import {StatusBar, StyleSheet, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import ActionAddContact from '../components/common/ActionAddContact';
-import ContactListItem from '../components/common/ContactListItem';
 import HeaderBar from '../components/common/HeaderBar';
 import HeaderBarTitle from '../components/common/HeaderBarTitle';
+import ContactList from '../components/contact/ContactList';
 import {setContactList} from '../redux/actions/contact';
 import {Api} from '../services';
-import {Colors, Spacing, Typography} from '../styles';
+import {Colors, Spacing} from '../styles';
 import Utils from '../utils';
 
-export default function ContactListScreen() {
-  const navigation = useNavigation();
+export default function ContactListScreen({navigation}) {
   const [isLoading, setIsLoading] = useState(false);
 
   const _handlePressContactListItem = useCallback(
@@ -23,17 +21,16 @@ export default function ContactListScreen() {
   );
   const dispatch = useDispatch();
 
-  const fetchAllContact = useCallback(() => {
+  const fetchAllContact = useCallback(async () => {
     setIsLoading(true);
-    Api.fetchAllContact()
-      .then((response) => {
-        dispatch(setContactList({data: response.data.data}));
-        setIsLoading(false);
-      })
-      .catch((e) => {
-        setIsLoading(false);
-        Utils.SmallMessage.showError();
-      });
+    try {
+      const response = await Api.fetchAllContact();
+      dispatch(setContactList({data: response.data.data}));
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+      Utils.SmallMessage.showError();
+    }
   }, [dispatch]);
 
   useEffect(() => {
@@ -42,23 +39,6 @@ export default function ContactListScreen() {
 
   const contactList = useSelector((state) => state.contact.data);
 
-  function _renderItem({item}) {
-    return (
-      <ContactListItem
-        id={item.id}
-        firstName={item.firstName}
-        lastName={item.lastName}
-        age={item.age}
-        photo={item.photo}
-        onPress={_handlePressContactListItem}
-      />
-    );
-  }
-
-  function _keyExtractor(item) {
-    return item.id;
-  }
-
   function _handlePressAddContact() {
     navigation.navigate('CreateEditContact');
   }
@@ -66,16 +46,14 @@ export default function ContactListScreen() {
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor={Colors.primary} barStyle={'dark-content'} />
-      <HeaderBar>
+      <HeaderBar isLoading={false}>
         <HeaderBarTitle text={'KontakMu'} />
       </HeaderBar>
-      <FlatList
+      <ContactList
         refreshing={isLoading}
         onRefresh={fetchAllContact}
         data={contactList}
-        renderItem={_renderItem}
-        keyExtractor={_keyExtractor}
-        ListFooterComponent={<View style={{marginBottom: Spacing.largest}} />}
+        onPressItem={_handlePressContactListItem}
       />
       <View style={styles.actionContainer}>
         <ActionAddContact onPress={_handlePressAddContact} />

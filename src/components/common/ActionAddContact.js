@@ -6,7 +6,9 @@ import Icon from 'react-native-vector-icons/Feather';
 export default function ActionAddContact({onPress}) {
   return (
     <View style={styles.actionAddContact}>
-      <TouchableNativeFeedback onPress={onPress}>
+      <TouchableNativeFeedback
+        testID={'action-add-contact-button'}
+        onPress={onPress}>
         <View style={styles.actionAddContactButton}>
           <Icon key={'icon'} name={'plus'} size={24} style={styles.icon} />
           <Text style={styles.caption}>{'Tambah kontak'}</Text>

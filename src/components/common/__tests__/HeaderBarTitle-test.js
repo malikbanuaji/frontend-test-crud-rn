@@ -1,13 +1,13 @@
+import {render} from '@testing-library/react-native';
 import React from 'react';
-import renderer from 'react-test-renderer';
 import HeaderBarTitle from '../HeaderBarTitle';
 
 test('renders correctly', () => {
-  const tree = renderer.create(<HeaderBarTitle />).toJSON();
+  const tree = render(<HeaderBarTitle />).toJSON();
   expect(tree).toMatchSnapshot();
 });
 
 test('renders correctly with props `text`', () => {
-  const tree = renderer.create(<HeaderBarTitle text={'Hello'} />).toJSON();
+  const tree = render(<HeaderBarTitle text={'Hello'} />).toJSON();
   expect(tree).toMatchSnapshot();
 });

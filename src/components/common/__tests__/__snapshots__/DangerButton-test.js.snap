@@ -18,6 +18,64 @@ exports[`renders correctly 1`] = `
 >
   <View
     accessible={true}
+    focusable={true}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "padding": 8,
+      }
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "fontFamily": "Rubik-Medium",
+            "fontSize": 16,
+            "textAlign": "center",
+          },
+          Array [
+            Object {
+              "color": "#ffffff",
+              "fontFamily": "Rubik-Medium",
+              "fontSize": 16,
+              "textAlign": "center",
+            },
+            undefined,
+          ],
+        ]
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`renders correctly when disabled 1`] = `
+<View
+  style={
+    Array [
+      Array [
+        Object {
+          "backgroundColor": "#CA0B00",
+          "borderRadius": 4,
+          "overflow": "hidden",
+        },
+        undefined,
+      ],
+      Object {
+        "opacity": 0.5,
+      },
+    ]
+  }
+>
+  <View
+    accessible={true}
     focusable={false}
     onClick={[Function]}
     onResponderGrant={[Function]}

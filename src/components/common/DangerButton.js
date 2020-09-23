@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import {StyleSheet} from 'react-native';
 import {Mixins, Typography} from '../../styles';
 import BaseButton from './BaseButton';
@@ -10,11 +10,16 @@ export default function DangerButton({
   style,
   disabled,
 }) {
+  const handlePress = useCallback(() => {
+    if (disabled !== true) {
+      onPress();
+    }
+  }, [disabled, onPress]);
   return (
     <BaseButton
       disabled={disabled}
       text={text}
-      onPress={onPress}
+      onPress={handlePress}
       style={[styles.button, style]}
       textStyle={[styles.buttonText, textStyle]}
     />

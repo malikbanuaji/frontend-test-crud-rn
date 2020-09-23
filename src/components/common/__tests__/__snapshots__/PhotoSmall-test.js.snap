@@ -158,7 +158,7 @@ exports[`renders correctly without lastName 1`] = `
         }
       }
     >
-      D
+      J
     </Text>
   </View>
 </View>

@@ -1,7 +1,7 @@
 // users.test.js
 import Axios from 'axios';
 import * as Api from '../api';
-import {ResponseError} from '../ErrorsTest';
+import {ResponseError} from '../Errors';
 
 jest.mock('Axios');
 

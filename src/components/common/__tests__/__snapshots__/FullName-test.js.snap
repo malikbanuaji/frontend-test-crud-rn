@@ -10,7 +10,7 @@ exports[`renders correctly  1`] = `
     }
   }
 >
-  Doe Doe
+  John Doe
 </Text>
 `;
 
@@ -38,6 +38,6 @@ exports[`renders correctly without lastName 1`] = `
     }
   }
 >
-  Doe undefined
+  John undefined
 </Text>
 `;

@@ -17,7 +17,7 @@ export function popAskPermissionCamera(onPressPositive) {
   );
 }
 
-export function popAskPermissionGallery(onPressPositive) {
+export function popAskPermissionGallery(onPressPositive = () => {}) {
   Alert.alert(
     'Perizinan',
     'Untuk menambahkan foto, izinkan Kontak Mu untuk mengakses penyimpanan di perangkat Anda.',

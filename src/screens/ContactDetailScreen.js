@@ -4,20 +4,19 @@ import {Alert, StyleSheet, Text, View} from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import BackButton from '../components/common/BackButton';
 import DangerButton from '../components/common/DangerButton';
+import FullName from '../components/common/FullName';
 import HeaderBar from '../components/common/HeaderBar';
 import HeaderLoading from '../components/common/HeaderLoading';
 import NormalButton from '../components/common/NormalButton';
 import PhotoBig from '../components/common/PhotoBig';
+import useLoading from '../hook/useLoading';
 import * as ContactActions from '../redux/actions/contact';
 import {Api} from '../services';
 import {Spacing, Typography} from '../styles';
 import Utils from '../utils';
-import FullName from '../components/common/FullName';
 
-export default function ContactDetailScreen() {
+export default function ContactDetailScreen({navigation, route}) {
   const dispatch = useDispatch();
-  const navigation = useNavigation();
-  const route = useRoute();
 
   const _id = route.params?.id;
   const contactList = useSelector((state) => state.contact.data);
@@ -40,18 +39,17 @@ export default function ContactDetailScreen() {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  function deleteContact() {
+  async function deleteContact() {
     setIsLoading(true);
-    Api.deleteContact(_id)
-      .then(() => {
-        setIsLoading(false);
-        dispatch(ContactActions.deleteContact({id: _id}));
-        navigation.goBack();
-      })
-      .catch((e) => {
-        setIsLoading(false);
-        Utils.SmallMessage.showError();
-      });
+    try {
+      await Api.deleteContact(_id);
+      setIsLoading(false);
+      dispatch(ContactActions.deleteContact({id: _id}));
+      navigation.goBack();
+    } catch (error) {
+      setIsLoading(false);
+      Utils.SmallMessage.showError();
+    }
   }
 
   function _handlePressDelete() {
@@ -75,12 +73,8 @@ export default function ContactDetailScreen() {
 
   return (
     <View>
-      <HeaderBar>
-        {isLoading ? (
-          <HeaderLoading text={'Menghapus kontak...'} />
-        ) : (
-          <BackButton onPress={_handleBackButton} />
-        )}
+      <HeaderBar isLoading={isLoading} loadingMessage={'Menghapus kontak...'}>
+        <BackButton onPress={_handleBackButton} />
       </HeaderBar>
       <View style={styles.photoButtonView}>
         <PhotoBig

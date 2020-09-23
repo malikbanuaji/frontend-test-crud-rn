@@ -13,6 +13,7 @@ export default function PhotoModal({
 }) {
   return (
     <Modal
+      testID={'pick-photo-modal'}
       onBackdropPress={onPressAbort}
       onBackButtonPress={onPressAbort}
       hideModalContentWhileAnimating={false}
@@ -26,25 +27,33 @@ export default function PhotoModal({
         <Text style={styles.title}>Ganti Foto</Text>
         <View style={styles.titleUnderline} />
         {hasPhoto && (
-          <TouchableNativeFeedback onPress={onPressDelete}>
+          <TouchableNativeFeedback
+            testID={'photo-modal-delete-photo'}
+            onPress={onPressDelete}>
             <View style={styles.button}>
               <Text style={styles.buttonItemText}>Hapus foto</Text>
             </View>
           </TouchableNativeFeedback>
         )}
-        <TouchableNativeFeedback onPress={onPressCamera}>
+        <TouchableNativeFeedback
+          testID={'photo-modal-take-photo'}
+          onPress={onPressCamera}>
           <View style={styles.button}>
             <Text style={styles.buttonItemText}>Ambil foto baru</Text>
           </View>
         </TouchableNativeFeedback>
-        <TouchableNativeFeedback onPress={onPressGallery}>
+        <TouchableNativeFeedback
+          testID={'photo-modal-select-gallery'}
+          onPress={onPressGallery}>
           <View style={styles.button}>
             <Text style={styles.buttonItemText}>Pilih foto baru</Text>
           </View>
         </TouchableNativeFeedback>
         <View style={styles.cancelButtonContainer}>
           <View style={{...Mixins.buttonRounded}}>
-            <TouchableNativeFeedback onPress={onPressAbort}>
+            <TouchableNativeFeedback
+              testID={'photo-modal-abort'}
+              onPress={onPressAbort}>
               <View style={styles.cancelButtonView}>
                 <Text style={styles.actionButtonText}>Batal</Text>
               </View>

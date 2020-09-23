@@ -1,11 +1,6 @@
 import * as Settings from './settings';
 import Axios from 'axios';
 
-const MainAxios = Axios.create({
-  baseURL: Settings.BASE_URL,
-  timeout: Settings.TIMEOUT,
-});
-
 const config = {
   baseURL: Settings.BASE_URL,
   timeout: Settings.TIMEOUT,

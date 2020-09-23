@@ -1,6 +1,6 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {Typography, Spacing} from '../../styles';
+import {StyleSheet, Text} from 'react-native';
+import {Spacing, Typography} from '../../styles';
 
 export default function FullName({firstName, lastName}) {
   return (

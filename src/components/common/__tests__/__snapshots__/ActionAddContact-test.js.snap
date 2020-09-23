@@ -30,6 +30,7 @@ exports[`renders correctly 1`] = `
         "padding": 12,
       }
     }
+    testID="action-add-contact-button"
   >
     <Text
       allowFontScaling={false}

@@ -1,23 +1,11 @@
-import {useNavigation, useRoute} from '@react-navigation/native';
-import React, {useEffect, useMemo, useState} from 'react';
-import {
-  Linking,
-  PermissionsAndroid,
-  StyleSheet,
-  Text,
-  TextInput,
-  ToastAndroid,
-  useWindowDimensions,
-  View,
-} from 'react-native';
-import ImagePicker from 'react-native-image-crop-picker';
+import React, {useEffect, useState} from 'react';
+import {StyleSheet, Text, TextInput, ToastAndroid, View} from 'react-native';
 import {useDispatch} from 'react-redux';
-import AgePicker from '../components/common/AgePicker';
+import {AgePicker} from '../components/common';
 import BackButton from '../components/common/BackButton';
 import HeaderBar from '../components/common/HeaderBar';
 import HeaderBarButton from '../components/common/HeaderBarButton';
 import HeaderBarTitle from '../components/common/HeaderBarTitle';
-import HeaderLoading from '../components/common/HeaderLoading';
 import PhotoBig from '../components/common/PhotoBig';
 import PhotoModal from '../components/common/PhotoModal';
 import useLoading from '../hook/useLoading';
@@ -26,11 +14,13 @@ import {Api} from '../services';
 import {Colors, Mixins, Spacing, Typography} from '../styles';
 import Utils from '../utils';
 
-export default function CreateEditContactScreen() {
+export default function CreateEditContactScreen({navigation, route}) {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [age, setAge] = useState('0');
   const [photo, setPhoto] = useState('N/A');
+
+  const dispatch = useDispatch();
 
   const [validateStatus, setValidateStatus] = useState({
     firstName: true,
@@ -39,12 +29,6 @@ export default function CreateEditContactScreen() {
   });
 
   const {isLoading, startLoading, stopLoading} = useLoading();
-
-  const navigation = useNavigation();
-  const route = useRoute();
-
-  const dispatch = useDispatch();
-
   const actionStatus = route.params?.actionStatus;
   const contactDetail = route.params?.contactDetail || {
     photo: 'N/A',
@@ -94,87 +78,30 @@ export default function CreateEditContactScreen() {
     closeModal();
   }
 
-  function openGalleryPicker() {
-    ImagePicker.openPicker({
-      width: 100,
-      height: 100,
-      cropping: true,
-      cropperStatusBarColor: Colors.primary,
-      cropperCancelText: 'Batal',
-      cropperChooseText: 'Pilih',
-      cropperToolbarTitle: 'Ubah gambar',
-      includeBase64: true,
-      cropperToolbarColor: Colors.primary,
-      multiple: false,
-      cropperToolbarWidgetColor: Colors.white,
-    })
-      .then((value) => {
-        setPhoto(`data:${value.mime};base64,${value.data}`);
-        closeModal();
-      })
-      .catch((e) => {
-        closeModal();
+  async function _handleGallery() {
+    try {
+      Utils.UImagePicker.selectGallery(_handleGallery, (value) => {
+        if (value !== null) {
+          setPhoto(value);
+        }
       });
+    } catch (error) {}
   }
 
-  function openPickCamera() {
-    ImagePicker.openCamera({
-      width: 100,
-      height: 100,
-      cropping: true,
-      cropperStatusBarColor: Colors.primary,
-      cropperCancelText: 'Batal',
-      cropperChooseText: 'Pilih',
-      cropperToolbarTitle: 'Ubah gambar',
-      includeBase64: true,
-      cropperToolbarColor: Colors.primary,
-      multiple: false,
-      cropperToolbarWidgetColor: Colors.white,
-    })
-      .then((value) => {
-        setPhoto(`data:${value.mime};base64,${value.data}`);
-        closeModal();
-      })
-      .catch((e) => {
-        closeModal();
+  async function _handleCamera() {
+    try {
+      Utils.UImagePicker.takePhoto(_handleCamera, (value) => {
+        if (value !== null) {
+          setPhoto(value);
+        }
       });
+    } catch (e) {}
   }
 
-  function _handleGallery() {
-    PermissionsAndroid.requestMultiple([
-      PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
-      PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
-    ]).then((multipleResult) => {
-      if (Object.values(multipleResult).includes('never_ask_again')) {
-        Utils.PopUp.popAskPermissionCamera(() => Linking.openSettings());
-      } else if (Object.values(multipleResult).includes('denied')) {
-        Utils.PopUp.popAskPermissionCamera(() => _handleGallery());
-      } else {
-        openGalleryPicker();
-      }
-    });
-  }
-
-  function _handleCamera() {
-    PermissionsAndroid.requestMultiple([
-      PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
-      PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
-      PermissionsAndroid.PERMISSIONS.CAMERA,
-    ]).then((multipleResult) => {
-      if (Object.values(multipleResult).includes('never_ask_again')) {
-        Utils.PopUp.popAskPermissionCamera(() => Linking.openSettings());
-      } else if (Object.values(multipleResult).includes('denied')) {
-        Utils.PopUp.popAskPermissionCamera(() => _handleCamera());
-      } else {
-        openPickCamera();
-      }
-    });
-  }
-
-  function _handleOnPressSave() {
+  async function _handleOnPressSave() {
     const isFirstNameValid = Utils.Validator.firstNameValidator(firstName);
     const isLastNameValid = Utils.Validator.lastNameValidator(lastName);
-    const isAgeValid = Number(age) <= 100 && Number(age) > 0;
+    const isAgeValid = Utils.Validator.ageValidator(age);
     setValidateStatus({
       firstName: isFirstNameValid,
       lastName: isLastNameValid,
@@ -183,91 +110,68 @@ export default function CreateEditContactScreen() {
     if (isFirstNameValid && isLastNameValid && isAgeValid) {
       if (actionStatus === 'EDIT') {
         startLoading();
-        Api.editContact({
-          id: contactDetail.id,
-          firstName: firstName,
-          lastName: lastName,
-          age: String(age),
-          photo: photo,
-        })
-          .then(() => {
-            stopLoading();
-            dispatch(
-              ContactActions.updateContact({
-                id: contactDetail.id,
-                firstName: firstName,
-                lastName: lastName,
-                age: String(age),
-                photo: photo,
-              }),
-            );
-            ToastAndroid.show('Kontak telah diperbarui.', ToastAndroid.SHORT);
-            navigation.goBack();
-          })
-          .catch((e) => {
-            stopLoading();
-            Utils.SmallMessage.showError();
-            console.log(e.response.data);
+        try {
+          await Api.editContact({
+            id: contactDetail.id,
+            firstName: firstName,
+            lastName: lastName,
+            age: String(age),
+            photo: photo,
           });
+          stopLoading();
+          dispatch(
+            ContactActions.updateContact({
+              id: contactDetail.id,
+              firstName: firstName,
+              lastName: lastName,
+              age: String(age),
+              photo: photo,
+            }),
+          );
+          ToastAndroid.show('Kontak telah diperbarui.', ToastAndroid.SHORT);
+          navigation.goBack();
+        } catch (e) {
+          stopLoading();
+          Utils.SmallMessage.showError();
+          console.log(e.response.data);
+        }
       } else {
         startLoading();
-        Api.addContact({
-          firstName: firstName,
-          lastName: lastName,
-          age: String(age),
-          photo: photo,
-        })
-          .then(() => {
-            Api.fetchAllContact()
-              .then((response) => {
-                stopLoading();
-                dispatch(
-                  ContactActions.setContactList({data: response.data.data}),
-                );
-                ToastAndroid.show(
-                  'Kontak telah tersimpan.',
-                  ToastAndroid.SHORT,
-                );
-                navigation.goBack();
-              })
-              .catch((e) => {
-                stopLoading();
-                Utils.SmallMessage.showError();
-              });
-          })
-          .catch((e) => {
-            stopLoading();
-            Utils.SmallMessage.showError();
+        try {
+          await Api.addContact({
+            firstName: firstName,
+            lastName: lastName,
+            age: String(age),
+            photo: photo,
           });
+          const response = await Api.fetchAllContact();
+          stopLoading();
+          dispatch(ContactActions.setContactList({data: response.data.data}));
+          ToastAndroid.show('Kontak telah tersimpan.', ToastAndroid.SHORT);
+          navigation.goBack();
+        } catch (error) {
+          stopLoading();
+          Utils.SmallMessage.showError();
+          console.log(error);
+        }
       }
     }
   }
 
   return (
     <View style={styles.createEditContactScreen}>
-      <HeaderBar>
-        {isLoading ? (
-          <HeaderLoading
-            text={
-              actionStatus === 'EDIT'
-                ? 'Memperbarui kontak...'
-                : 'Menyimpan kontak...'
-            }
-          />
-        ) : (
-          <>
-            <BackButton onPress={_handleBackButton} />
-            <HeaderBarTitle
-              text={`${actionStatus === 'EDIT' ? 'Ubah' : 'Tambah'} kontak`}
-            />
-            <HeaderBarButton
-              disabled={false}
-              style={styles.saveButton}
-              text={'Simpan'}
-              onPress={_handleOnPressSave}
-            />
-          </>
-        )}
+      <HeaderBar
+        isLoading={isLoading}
+        loadingMessage={
+          actionStatus === 'EDIT'
+            ? 'Memperbarui kontak...'
+            : 'Menyimpan kontak...'
+        }>
+        <BackButton onPress={_handleBackButton} />
+        <HeaderBarTitle
+          text={`${actionStatus === 'EDIT' ? 'Ubah' : 'Tambah'} kontak`}
+        />
+        <HeaderBarButton text={'Simpan'} onPress={_handleOnPressSave} />
       </HeaderBar>
       <View style={[styles.photoButtonView]}>
         <PhotoBig
@@ -278,26 +182,32 @@ export default function CreateEditContactScreen() {
         />
       </View>
       <TextInput
+        testID={'first-name-text-input'}
         style={styles.textInput}
         placeholder={'Nama depan'}
         onChangeText={_handleOnChangeTextFirstName}
         value={firstName}
       />
       {validateStatus.firstName === false && (
-        <Text style={{color: Colors.danger, marginHorizontal: Spacing.base}}>
+        <Text
+          testID={'first-name-error-message'}
+          style={{color: Colors.danger, marginHorizontal: Spacing.base}}>
           {
             '* Terdiri dari 3 - 30 karakter\n* Hanya diperbolehkan alfanumerik (a-zA-Z0-9)'
           }
         </Text>
       )}
       <TextInput
+        testID={'last-name-text-input'}
         style={styles.textInput}
         placeholder={'Nama belakang'}
         onChangeText={_handleOnChangeTextLastName}
         value={lastName}
       />
       {validateStatus.lastName === false && (
-        <Text style={{color: Colors.danger, marginHorizontal: Spacing.base}}>
+        <Text
+          testID={'last-name-error-message'}
+          style={{color: Colors.danger, marginHorizontal: Spacing.base}}>
           {
             '* Terdiri dari 3 - 30 karakter\n* Hanya diperbolehkan alfanumerik (a-zA-Z0-9)'
           }
@@ -305,14 +215,15 @@ export default function CreateEditContactScreen() {
       )}
       <View style={styles.agePickerView}>
         <AgePicker
-          maxAge={100}
           selectedValue={age}
           style={styles.agePicker}
           onValueChange={_handleOnChangeTextAge}
         />
       </View>
       {validateStatus.age === false && (
-        <Text style={{color: Colors.danger, marginHorizontal: Spacing.base}}>
+        <Text
+          testID={'age-error-message'}
+          style={{color: Colors.danger, marginHorizontal: Spacing.base}}>
           {'* Rentang umur 1 - 100'}
         </Text>
       )}

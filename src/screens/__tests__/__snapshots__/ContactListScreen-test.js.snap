@@ -1,0 +1,295 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContactList render correctly 1`] = `
+<View
+  style={
+    Object {
+      "display": "flex",
+      "flex": 1,
+      "flexDirection": "column",
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "display": "flex",
+        "flexDirection": "row",
+        "height": 72,
+        "padding": 16,
+      }
+    }
+    testID="header-bar"
+  >
+    <Text
+      style={
+        Object {
+          "flex": 1,
+          "fontFamily": "Rubik-Light",
+          "fontSize": 24,
+          "marginLeft": 8,
+        }
+      }
+    >
+      KontakMu
+    </Text>
+  </View>
+  <RCTScrollView
+    ListFooterComponent={
+      <View
+        style={
+          Object {
+            "marginBottom": 28,
+          }
+        }
+      />
+    }
+    data={
+      Array [
+        Object {
+          "age": 24,
+          "firstName": "Frodo",
+          "id": "93ad6070-c92b-11e8-b02f-cbfa15db428b",
+          "lastName": "Baggins",
+          "photo": "N/A",
+        },
+      ]
+    }
+    disableVirtualization={false}
+    getItem={[Function]}
+    getItemCount={[Function]}
+    horizontal={false}
+    initialNumToRender={10}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    onContentSizeChange={[Function]}
+    onEndReachedThreshold={2}
+    onLayout={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onRefresh={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    refreshControl={
+      <RefreshControlMock
+        onRefresh={[Function]}
+        refreshing={false}
+      />
+    }
+    refreshing={false}
+    removeClippedSubviews={true}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    stickyHeaderIndices={Array []}
+    testID="contact-list"
+    updateCellsBatchingPeriod={50}
+    viewabilityConfigCallbackPairs={Array []}
+    windowSize={21}
+  >
+    <RCTRefreshControl />
+    <View>
+      <View
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          style={
+            Array [
+              undefined,
+              undefined,
+            ]
+          }
+        >
+          <View
+            accessible={true}
+            focusable={true}
+            nativeBackgroundAndroid={
+              Object {
+                "attribute": "selectableItemBackground",
+                "rippleRadius": undefined,
+                "type": "ThemeAttrAndroid",
+              }
+            }
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignItems": "center",
+                "display": "flex",
+                "flexDirection": "row",
+                "paddingHorizontal": 16,
+                "paddingVertical": 8,
+              }
+            }
+            testID="contact-list-item-button"
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "marginRight": 8,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#93b5e1",
+                      "borderRadius": 8,
+                      "height": 40,
+                      "justifyContent": "center",
+                      "width": 40,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    Object {
+                      "fontFamily": "Rubik-Medium",
+                      "fontSize": 14,
+                    }
+                  }
+                >
+                  FB
+                </Text>
+              </View>
+            </View>
+            <View
+              style={
+                Object {
+                  "display": "flex",
+                  "flexDirection": "column",
+                }
+              }
+            >
+              <Text
+                style={
+                  Object {
+                    "fontFamily": "Rubik-Medium",
+                    "fontSize": 16,
+                  }
+                }
+              >
+                Frodo Baggins
+              </Text>
+              <Text
+                style={
+                  Object {
+                    "fontFamily": "Rubik-Light",
+                    "fontSize": 14,
+                  }
+                }
+              >
+                24
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+      >
+        <View
+          style={
+            Object {
+              "marginBottom": 28,
+            }
+          }
+        />
+      </View>
+    </View>
+  </RCTScrollView>
+  <View
+    style={
+      Object {
+        "bottom": 16,
+        "position": "absolute",
+        "right": 16,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "borderRadius": 8,
+          "overflow": "hidden",
+        }
+      }
+    >
+      <View
+        accessible={true}
+        focusable={true}
+        nativeBackgroundAndroid={
+          Object {
+            "attribute": "selectableItemBackground",
+            "rippleRadius": undefined,
+            "type": "ThemeAttrAndroid",
+          }
+        }
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#93b5e1",
+            "borderRadius": 8,
+            "display": "flex",
+            "flexDirection": "row",
+            "overflow": "hidden",
+            "padding": 12,
+          }
+        }
+        testID="action-add-contact-button"
+      >
+        <Text
+          allowFontScaling={false}
+          style={
+            Array [
+              Object {
+                "color": undefined,
+                "fontSize": 24,
+              },
+              Object {
+                "marginRight": 4,
+              },
+              Object {
+                "fontFamily": "Feather",
+                "fontStyle": "normal",
+                "fontWeight": "normal",
+              },
+              Object {},
+            ]
+          }
+        >
+          
+        </Text>
+        <Text
+          style={
+            Object {
+              "fontFamily": "Rubik-Medium",
+              "fontSize": 14,
+            }
+          }
+        >
+          Tambah kontak
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;

@@ -1,10 +1,3 @@
-const {createStore, combineReducers} = require('redux');
-const {ContactReducer} = require('./reducer');
+import {configureStore} from './store';
 
-const rootReducer = combineReducers({
-  contact: ContactReducer,
-});
-
-const store = createStore(rootReducer);
-
-export {store};
+export {configureStore};

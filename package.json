@@ -34,21 +34,31 @@
     "@babel/preset-env": "^7.11.5",
     "@babel/runtime": "^7.11.2",
     "@react-native-community/eslint-config": "^2.0.0",
+    "@testing-library/jest-native": "^3.4.2",
+    "@testing-library/react-native": "^7.0.2",
     "babel-jest": "^26.3.0",
     "eslint": "^7.8.1",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.4.2",
     "metro-react-native-babel-preset": "^0.63.0",
-    "react-test-renderer": "16.13.1"
+    "prop-types": "^15.7.2",
+    "react-test-renderer": "16.13.1",
+    "redux-mock-store": "^1.5.4"
   },
   "jest": {
     "preset": "react-native",
     "setupFiles": [
-      "./node_modules/react-native-gesture-handler/jestSetup.js",
-      "<rootDir>/jest/setup.js"
+      "<rootDir>/setup.js"
+    ],
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-native/extend-expect",
+      "./setupAfterEnv.js"
     ],
     "moduleNameMapper": {
       ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "identity-obj-proxy"
-    }
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!(react-native|my-project|react-native-button|react-native-vector-icons|@react-native-community\\picker|react-native-image-crop-picker|react-native-modal|react-native-animatable)/)"
+    ]
   }
 }

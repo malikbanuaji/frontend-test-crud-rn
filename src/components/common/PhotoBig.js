@@ -7,7 +7,7 @@ import {
   useWindowDimensions,
   View,
 } from 'react-native';
-import {Colors, Mixins, Typography} from '../../styles';
+import {Mixins, Typography} from '../../styles';
 
 export default function PhotoBig({onPress, photo, firstName, lastName}) {
   const windows = useWindowDimensions();
@@ -19,7 +19,7 @@ export default function PhotoBig({onPress, photo, firstName, lastName}) {
   }, [windows.width]);
   return (
     <View style={styles.photo}>
-      <TouchableNativeFeedback onPress={onPress}>
+      <TouchableNativeFeedback testID={'photo-big-button'} onPress={onPress}>
         <View style={[styles.photo]}>
           {photo === 'N/A' ? (
             <View style={[photoSize, styles.emptyPhoto]}>

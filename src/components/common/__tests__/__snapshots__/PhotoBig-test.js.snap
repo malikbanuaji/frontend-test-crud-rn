@@ -27,6 +27,7 @@ exports[`renders correctly with full props 1`] = `
         },
       ]
     }
+    testID="photo-big-button"
   >
     <Image
       height={225}
@@ -74,6 +75,7 @@ exports[`renders correctly with image 1`] = `
         },
       ]
     }
+    testID="photo-big-button"
   >
     <Image
       height={225}
@@ -121,6 +123,7 @@ exports[`renders correctly without firstName 1`] = `
         },
       ]
     }
+    testID="photo-big-button"
   >
     <View
       style={
@@ -180,6 +183,7 @@ exports[`renders correctly without image 1`] = `
         },
       ]
     }
+    testID="photo-big-button"
   >
     <View
       style={
@@ -239,6 +243,7 @@ exports[`renders correctly without lastName 1`] = `
         },
       ]
     }
+    testID="photo-big-button"
   >
     <View
       style={
@@ -264,7 +269,7 @@ exports[`renders correctly without lastName 1`] = `
           }
         }
       >
-        D
+        J
       </Text>
     </View>
   </View>
